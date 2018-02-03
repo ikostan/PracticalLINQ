@@ -38,7 +38,9 @@ namespace ACM.BL
             //var c = customerList.Where(
             //    (customer) => customer.CustomerId == customerId);
 
-            foundCustomer = c.ToArray()[0];
+            //Get the result from the list
+            //foundCustomer = c.ToArray()[0];
+            foundCustomer = c.First();
 
             return foundCustomer;
         }

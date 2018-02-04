@@ -33,13 +33,14 @@ namespace ACM.BL
             //        where cust.CustomerId == customerId
             //        select cust;
 
-            //Using LINQ Method quaery:
-            var c = customerList.Where(
-                (customer) => customer.CustomerId == customerId);
-
             //Get the result from the list
             //foundCustomer = c.ToArray()[0];
-            foundCustomer = c.First();
+            //foundCustomer = c.First();
+
+            //Using LINQ Method quaery:
+            //var c = customerList.Where(
+            //    (customer) => customer.CustomerId == customerId);
+            foundCustomer = customerList.First((cust) => cust.CustomerId == customerId);
 
             return foundCustomer;
         }

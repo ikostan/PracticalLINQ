@@ -15,5 +15,14 @@ namespace ACM.Library
         {
             return Enumerable.Range(0, 10);
         }
+
+        /// <summary>
+        /// Build and return sequance of int numbers
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<char> BuildCharSequance()
+        {
+            return Enumerable.Range(0, 10).Select((i) => (char)('A' + i));
+        }
     }
 }

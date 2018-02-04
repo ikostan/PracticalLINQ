@@ -35,7 +35,7 @@ namespace ACM.Library
         }
 
         /// <summary>
-        /// 
+        /// Combine two sequances
         /// </summary>
         /// <returns></returns>
         public IEnumerable<int> CompareSequences()

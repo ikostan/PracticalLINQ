@@ -74,7 +74,10 @@ namespace ACM.BL
         /// <returns></returns>
         public IEnumerable<Customer> SortByNameTypeId(IEnumerable<Customer> list)
         {
-            var sortedList = list.OrderBy((c) => c.CustomerTypeId);
+            //var sortedList = list.OrderBy((c) => c.CustomerTypeId);
+            var sortedList = list
+                .OrderByDescending((c) => c.CustomerTypeId.HasValue)
+                .ThenBy((c) => c.CustomerTypeId);
             return sortedList;
         }
 

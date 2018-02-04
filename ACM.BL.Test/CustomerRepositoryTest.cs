@@ -41,7 +41,7 @@ namespace ACM.BL.Test
         }
 
         [TestMethod]
-        public void SortByNAmeTest()
+        public void SortByNameTest()
         {
             //Arrange
             CustomerRepository cr = new CustomerRepository();
@@ -90,5 +90,21 @@ namespace ACM.BL.Test
             Assert.AreEqual("Baggins", sorted.Last().LastName);
             //CollectionAssert.AreEqual(expected, sorted);
         }
-}
+
+        [TestMethod]
+        public void SortByTypeIdTest()
+        {
+            //Arrange
+            CustomerRepository cr = new CustomerRepository();
+            var list = cr.Retrieve();
+
+            //Act
+            var sorted = cr.SortByNameTypeId(list);
+
+            //Assert
+            Assert.IsNotNull(list);
+            Assert.IsNotNull(sorted);
+            Assert.AreEqual(null, sorted.Last().CustomerTypeId);
+        }
+    }
 }

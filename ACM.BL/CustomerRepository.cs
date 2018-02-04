@@ -68,6 +68,28 @@ namespace ACM.BL
         }
 
         /// <summary>
+        /// Sort list by customer type
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public IEnumerable<Customer> SortByNameTypeId(IEnumerable<Customer> list)
+        {
+            var sortedList = list.OrderBy((c) => c.CustomerTypeId);
+            return sortedList;
+        }
+
+        /// <summary>
+        /// Sort list by name in reverse order
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public IEnumerable<Customer> SortByNameInReverse(IEnumerable<Customer> list)
+        {
+            var sortedList = SortByName(list).Reverse();
+            return sortedList;
+        }
+
+        /// <summary>
         /// Predefined list of customers.
         /// </summary>
         /// <returns></returns>

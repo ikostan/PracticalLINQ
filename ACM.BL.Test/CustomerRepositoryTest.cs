@@ -65,5 +65,30 @@ namespace ACM.BL.Test
             //CollectionAssert.AreEqual(expected, sorted);
         }
 
-    }
+
+        [TestMethod]
+        public void SortByNameInReverseTest()
+        {
+            //Arrange
+            CustomerRepository cr = new CustomerRepository();
+            var list = cr.Retrieve();
+
+            //Act
+            var sorted = cr.SortByNameInReverse(list);
+
+            //Assert
+            /*
+                 CustomerId = 2, 
+                 FirstName="Bilbo",
+                 LastName = "Baggins"
+             */
+
+            Assert.IsNotNull(list);
+            Assert.IsNotNull(sorted);
+            Assert.AreEqual(2, sorted.Last().CustomerId);
+            Assert.AreEqual("Bilbo", sorted.Last().FirstName);
+            Assert.AreEqual("Baggins", sorted.Last().LastName);
+            //CollectionAssert.AreEqual(expected, sorted);
+        }
+}
 }

@@ -46,12 +46,23 @@ namespace ACM.BL
             foundCustomer = 
                 customerList.FirstOrDefault(
                     (cust) => 
-                    {
-                        return cust.CustomerId == customerId;
-                    }); 
-
+                        {
+                            System.Diagnostics.Debug.WriteLine($"{cust.CustomerId}");
+                            return cust.CustomerId == customerId;
+                        }); 
 
             return foundCustomer;
+        }
+
+        /// <summary>
+        /// Sort list by name
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public IEnumerable<Customer> SortByName(IEnumerable<Customer> list)
+        {
+            var sortedList = list.OrderBy((c) => c.FirstName);
+            return sortedList;
         }
 
         /// <summary>

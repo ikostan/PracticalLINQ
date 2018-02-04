@@ -29,14 +29,13 @@ namespace ACM.BL
             //}
 
             //Using LINQ Quaery syntax:            
-            var c = from cust in customerList
-                    where cust.CustomerId == customerId
-                    select cust;
-
+            //var c = from cust in customerList
+            //        where cust.CustomerId == customerId
+            //        select cust;
 
             //Using LINQ Method quaery:
-            //var c = customerList.Where(
-            //    (customer) => customer.CustomerId == customerId);
+            var c = customerList.Where(
+                (customer) => customer.CustomerId == customerId);
 
             //Get the result from the list
             //foundCustomer = c.ToArray()[0];

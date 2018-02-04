@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ACM.BL
 {
-    class CustomerTypeRepository
+    public class CustomerTypeRepository
     {
         public List<CustomerType> Retrieve()
         {

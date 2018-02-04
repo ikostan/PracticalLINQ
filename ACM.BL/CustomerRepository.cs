@@ -158,5 +158,36 @@ namespace ACM.BL
             return newList;
         }
 
+        /// <summary>
+        /// Joins customers and customer types
+        /// </summary>
+        /// <param name="customers"></param>
+        /// <param name="types"></param>
+        /// <returns></returns>
+        public dynamic GetNamesAndType(
+            IEnumerable<Customer> customers, 
+            IEnumerable<CustomerType> types)
+        {
+            var results = customers
+                .Join(
+                    types,
+                    cid => cid.CustomerTypeId,
+                    tid => tid.CustomerTypeId,
+                    (cid, tid) =>
+                        new {
+                            Name = cid.FirstName + " " + cid.LastName,
+                            tId = tid.CustomerTypeId,
+                            tName = tid.TypeName
+                        }
+                );
+
+            foreach (var item in results)
+            {
+                Console.WriteLine(item.Name + ": " + item.tId + " => " + item.tName);
+            }
+
+            return results;
+        }
+
     }
 }

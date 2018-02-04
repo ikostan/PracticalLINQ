@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ACM.BL
 {
-    class CustomerType
+    public class CustomerType
     {
         public int CustomerTypeId { get; set; }
         public string TypeName { get; set; }

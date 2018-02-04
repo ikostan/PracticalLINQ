@@ -144,5 +144,20 @@ namespace ACM.BL.Test
             //Assert.AreEqual(4, names.Count());
         }
 
+        [TestMethod]
+        public void GetNamesAndTypeTest()
+        {
+            //Arrange
+            CustomerRepository cr = new CustomerRepository();
+            CustomerTypeRepository ctr = new CustomerTypeRepository();
+
+            //Act
+            var customers = cr.Retrieve();
+            var types = ctr.Retrieve();
+            var result = cr.GetNamesAndType(customers, types);
+
+            //Assert
+
+        }
     }
 }

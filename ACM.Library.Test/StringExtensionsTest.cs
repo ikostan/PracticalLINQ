@@ -15,8 +15,8 @@ namespace ACM.Library.Test
             var expected = "The Return Of The King";
 
             // Act
-           //var result = StringExtensions.ConvertToTitleCase(source);
-            var result = source.ConvertToTitleCase();
+            //var result = StringExtensions.ConvertToTitleCase(source); //Calling as a standart method
+            var result = source.ConvertToTitleCase(); //Calling as an extention method
 
             // Assert
             Assert.IsNotNull(result);

@@ -65,7 +65,6 @@ namespace ACM.BL.Test
             //CollectionAssert.AreEqual(expected, sorted);
         }
 
-
         [TestMethod]
         public void SortByNameInReverseTest()
         {
@@ -124,6 +123,25 @@ namespace ACM.BL.Test
             //Assert
             Assert.IsNotNull(names);
             Assert.AreEqual(4, names.Count());
+        }
+
+        [TestMethod]
+        public void GetNamesAndEmailsTest()
+        {
+            //Arrange
+            CustomerRepository cr = new CustomerRepository();
+
+            //Act
+            var names = cr.GetNamesAndEmails(cr.Retrieve());
+
+            //foreach (var item in names)
+            //{
+            //    TestContext.WriteLine(item);
+            //}
+
+            ////Assert
+            //Assert.IsNotNull(names);
+            //Assert.AreEqual(4, names.Count());
         }
 
     }

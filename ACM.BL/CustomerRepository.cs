@@ -136,5 +136,27 @@ namespace ACM.BL
             return list.Select((c) => c.FirstName + " " + c.LastName);
         }
 
+        /// <summary>
+        /// Receive list of names and emails
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public dynamic GetNamesAndEmails(IEnumerable<Customer> list)
+        {
+            var newList = list
+                .Select((c) => 
+                    new {
+                        Name = c.FirstName + " " + c.LastName,
+                        Email = c.EmailAddress
+                    });
+
+            foreach (var item in newList)
+            {
+                Console.WriteLine(item.Name + ": " + item.Email);
+            }
+
+            return newList;
+        }
+
     }
 }

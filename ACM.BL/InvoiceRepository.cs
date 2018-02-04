@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ACM.BL
 {
-    class InvoiceRepository
+    public class InvoiceRepository
     {
         /// <summary>
         /// Return invoices per Customer Id

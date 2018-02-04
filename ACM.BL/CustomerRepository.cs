@@ -40,7 +40,16 @@ namespace ACM.BL
             //Using LINQ Method quaery:
             //var c = customerList.Where(
             //    (customer) => customer.CustomerId == customerId);
-            foundCustomer = customerList.First((cust) => cust.CustomerId == customerId);
+            //foundCustomer = customerList.First((cust) => cust.CustomerId == customerId); //Causes for Exception if nothing found
+
+            //Returns null in case no valid results found
+            foundCustomer = 
+                customerList.FirstOrDefault(
+                    (cust) => 
+                    {
+                        return cust.CustomerId == customerId;
+                    }); 
+
 
             return foundCustomer;
         }

@@ -17,7 +17,16 @@ namespace ACM.Library
         }
 
         /// <summary>
-        /// Build and return sequance of int numbers
+        /// Build and return repeatable sequance of int numbers
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<int> BuildRepeatbleIntSequance()
+        {
+            return Enumerable.Repeat(1, 10);
+        }
+
+        /// <summary>
+        /// Build and return sequance of chars
         /// </summary>
         /// <returns></returns>
         public IEnumerable<char> BuildCharSequance()

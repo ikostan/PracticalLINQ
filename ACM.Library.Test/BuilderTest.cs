@@ -34,6 +34,27 @@ namespace ACM.Library.Test
         }
 
         [TestMethod]
+        public void BuildRepeatbleIntSequanceTest()
+        {
+            //Arrange
+            Builder b = new Builder();
+
+            //Act
+            var range = b.BuildRepeatbleIntSequance();
+
+            //foreach (var item in range)
+            //{
+            //    testContext.WriteLine(item.ToString());
+            //}
+
+            //Assert
+            Assert.IsNotNull(range);
+            Assert.AreEqual(10, range.Count());
+            Assert.AreEqual(1, range.First());
+            Assert.AreEqual(1, range.Last());
+        }
+
+        [TestMethod]
         public void BuildCharSequanceTest()
         {
             //Arrange

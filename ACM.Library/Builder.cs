@@ -33,5 +33,18 @@ namespace ACM.Library
         {
             return Enumerable.Range(0, 10).Select((i) => (char)('A' + i));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<int> CompareSequences()
+        {
+            var seq1 = Enumerable.Range(0, 10);
+            var seq2 = Enumerable.Range(0, 10).Select((i) => i*i);
+
+            //return seq1.Intersect(seq2);
+            return seq1.Except(seq2);
+        }
     }
 }

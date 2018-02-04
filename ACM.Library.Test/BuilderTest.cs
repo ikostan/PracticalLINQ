@@ -10,7 +10,17 @@ namespace ACM.Library.Test
     [TestClass]
     public class BuilderTest
     {
-        public TestContext testContext { get; set; }
+        private TestContext _testContextInstance;
+
+        /// <summary>
+        ///  Gets or sets the test context which provides
+        ///  information about and functionality for the current test run.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get { return _testContextInstance; }
+            set { _testContextInstance = value; }
+        }
 
         [TestMethod]
         public void BuildIntSequanceTest()
@@ -21,10 +31,10 @@ namespace ACM.Library.Test
             //Act
             var range = b.BuildIntSequance();
 
-            //foreach (var item in range)
-            //{
-            //    testContext.WriteLine(item.ToString());
-            //}
+            foreach (var item in range)
+            {
+                TestContext.WriteLine(item.ToString());
+            }
 
             //Assert
             Assert.IsNotNull(range);
@@ -42,10 +52,10 @@ namespace ACM.Library.Test
             //Act
             var range = b.BuildRepeatbleIntSequance();
 
-            //foreach (var item in range)
-            //{
-            //    testContext.WriteLine(item.ToString());
-            //}
+            foreach (var item in range)
+            {
+                TestContext.WriteLine(item.ToString());
+            }
 
             //Assert
             Assert.IsNotNull(range);
@@ -63,16 +73,38 @@ namespace ACM.Library.Test
             //Act
             var chars = b.BuildCharSequance();
 
-            //foreach (var item in range)
-            //{
-            //    testContext.WriteLine(item.ToString());
-            //}
+            foreach (var item in chars)
+            {
+                TestContext.WriteLine(item.ToString());
+            }
 
             //Assert
             Assert.IsNotNull(chars);
             Assert.AreEqual(10, chars.Count());
             Assert.AreEqual('A', chars.First());
             Assert.AreEqual('J', chars.Last());
+        }
+
+        [TestMethod]
+        public void CompareSequencesTest()
+        {
+            //Arrange
+            Builder b = new Builder();
+
+            //Act
+            var list = b.CompareSequences();
+
+            foreach (var item in list)
+            {
+                //System.Diagnostics.Debug.WriteLine(item);
+                TestContext.WriteLine(item.ToString());
+            }
+
+            //Assert
+            Assert.IsNotNull(list);
+            //Assert.AreEqual(4, list.Count());
+            //Assert.AreEqual(0, list.First());
+            //Assert.AreEqual(9, list.Last());
         }
     }
 }

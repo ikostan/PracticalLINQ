@@ -160,6 +160,29 @@ namespace ACM.BL.Test
 
         }
 
+        [TestMethod]
+        public void GetOverdueCustomersTest()
+        {
+            //Arrange
+            CustomerRepository cr = new CustomerRepository();
+
+            //Act
+            var cList = cr.Retrieve();
+            var overdue = cr.GetOverdueCustomers(cList);
+
+            //Assert
+            foreach (var item in overdue)
+            {
+                foreach (Invoice i in item)
+                {
+                    TestContext.WriteLine(i.ToString());
+                }
+                TestContext.WriteLine(" ");
+            }
+
+            Assert.IsNotNull(overdue);
+        }
+
         //End of Class
     }
 }

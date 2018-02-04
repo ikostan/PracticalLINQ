@@ -14,5 +14,10 @@ namespace ACM.BL
         public string EmailAddress { get; set; }
 
         public List<Invoice> InvoiceList { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("{0} {1}: {2}", FirstName, LastName, CustomerId);
+        }
     }
 }

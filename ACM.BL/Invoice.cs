@@ -12,5 +12,10 @@ namespace ACM.BL
         public DateTime InvoiceDate { get; set; }
         public DateTime DueDate { get; set; }
         public bool? IsPaid { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("Invoice id: {0}, Customer id: {1}", InvoiceId, CustomerId);
+        }
     }
 }

@@ -98,31 +98,42 @@ namespace ACM.BL
         /// <returns></returns>
         public List<Customer> Retrieve()
         {
+            InvoiceRepository ir = new InvoiceRepository();
+
             List<Customer> custList = new List<Customer>
                     {new Customer() 
                           { CustomerId = 1, 
                             FirstName="Frodo",
                             LastName = "Baggins",
                             EmailAddress = "fb@hob.me",
-                            CustomerTypeId=1},
+                            CustomerTypeId=1,
+                            InvoiceList = ir.Retrieve(1).ToList()
+                            },
                     new Customer() 
                           { CustomerId = 2, 
                             FirstName="Bilbo",
                             LastName = "Baggins",
                             EmailAddress = "bb@hob.me",
-                            CustomerTypeId=null},
+                            CustomerTypeId=null,
+                            InvoiceList = ir.Retrieve(2).ToList()
+                            },
                     new Customer() 
                           { CustomerId = 3, 
                             FirstName="Samwise",
                             LastName = "Gamgee",
                             EmailAddress = "sg@hob.me",
-                            CustomerTypeId=1},
+                            CustomerTypeId=1,
+                            InvoiceList = ir.Retrieve(3).ToList()
+                            },
                     new Customer() 
                           { CustomerId = 4, 
                             FirstName="Rosie",
                             LastName = "Cotton",
                             EmailAddress = "rc@hob.me",
-                            CustomerTypeId=2}};
+                            CustomerTypeId=2,
+                            InvoiceList = ir.Retrieve(4).ToList()
+                            }
+            };
             return custList;
         }
 

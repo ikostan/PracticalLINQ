@@ -204,10 +204,10 @@ namespace ACM.BL
         /// Get list of overdue customers
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IEnumerable<Invoice>> GetOverdueCustomers(List<Customer> custList)
+        public IEnumerable<Invoice> GetOverdueCustomers(List<Customer> custList)
         {
             var overdue = custList
-                            .Select((c) => 
+                            .SelectMany((c) => 
                                 c.InvoiceList
                                     .Where((i) => (i.IsPaid ?? false) == false));
 

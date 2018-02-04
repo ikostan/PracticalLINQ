@@ -173,10 +173,11 @@ namespace ACM.BL.Test
             //Assert
             foreach (var item in overdue)
             {
-                foreach (Invoice i in item)
-                {
-                    TestContext.WriteLine(i.ToString());
-                }
+                TestContext.WriteLine(item.ToString());
+                //foreach (var i in item)
+                //{
+                //    TestContext.WriteLine(i.ToString());
+                //}
                 TestContext.WriteLine(" ");
             }
 

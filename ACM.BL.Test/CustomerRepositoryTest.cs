@@ -106,5 +106,25 @@ namespace ACM.BL.Test
             Assert.IsNotNull(sorted);
             Assert.AreEqual(null, sorted.Last().CustomerTypeId);
         }
+
+        [TestMethod]
+        public void GetNamesTest()
+        {
+            //Arrange
+            CustomerRepository cr = new CustomerRepository();
+
+            //Act
+            var names = cr.GetNames(cr.Retrieve());
+
+            foreach (var item in names)
+            {
+                TestContext.WriteLine(item);
+            }
+
+            //Assert
+            Assert.IsNotNull(names);
+            Assert.AreEqual(4, names.Count());
+        }
+
     }
 }

@@ -125,5 +125,16 @@ namespace ACM.BL
                             CustomerTypeId=2}};
             return custList;
         }
+
+        /// <summary>
+        /// Receive list of names
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public IEnumerable<string> GetNames(IEnumerable<Customer> list)
+        {
+            return list.Select((c) => c.FirstName + " " + c.LastName);
+        }
+
     }
 }

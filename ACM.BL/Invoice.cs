@@ -18,7 +18,13 @@ namespace ACM.BL
         public decimal Amount { get; set; }
         public int NumberOfUnits { get; set; }
         public decimal DiscountPercent { get; set; }
-        public decimal TotalAmount { get; set; }
+        public decimal TotalAmount
+        {
+            get
+            {
+                return this.Amount - (this.Amount * (this.DiscountPercent / 100));
+            }
+        }
 
         //
         public override string ToString()

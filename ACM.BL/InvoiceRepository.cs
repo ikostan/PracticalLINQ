@@ -109,6 +109,17 @@ namespace ACM.BL
             return filteredList;
         }
 
+        /// <summary>
+        /// Calculatetotal amount for all invoices
+        /// </summary>
+        /// <param name="invoices"></param>
+        /// <returns></returns>
+        public decimal CalculateTotalAmountInvoice(IEnumerable<Invoice> invoices)
+        {
+            var total = invoices.Sum((i) => i.TotalAmount);
+            return total;
+        }
+
         //End of Class
     }
 }

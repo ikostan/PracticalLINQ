@@ -59,6 +59,30 @@ namespace ACM.Win
             CustomerComboBox.DataSource = custNameId;
         }
 
+        /// <summary>
+        /// ComboBox selected index changed event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CustomerComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (CustomerComboBox.SelectedValue != null)
+            {
+                int custId;
+
+                if (int.TryParse(CustomerComboBox.SelectedValue.ToString(), out custId))
+                {
+                    var customers = customerRepository.Retrieve();
+                    //CustomerGridView.DataSource = customers.Where((c) => c.CustomerId == custId).ToList();
+                    CustomerGridView.DataSource = 
+                        new List<Customer>()
+                        {
+                            customerRepository.Find(customers, custId)
+                        };
+                }
+            }
+        }
+
         //End of class
     }
 }

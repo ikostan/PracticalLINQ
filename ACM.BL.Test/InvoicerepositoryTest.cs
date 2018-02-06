@@ -43,10 +43,14 @@ namespace ACM.BL.Test
         public void CalculateModeTest()
         {
             // Arrange
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            var invoices = invoiceRepository.Retrieve();
 
             // Act
+            var max = invoiceRepository.CalculateMode(invoices);
 
             // Assert
+            Assert.AreEqual(15.0M, max);
         }
 
         [TestMethod]

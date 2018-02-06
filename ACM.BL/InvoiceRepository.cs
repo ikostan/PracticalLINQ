@@ -110,13 +110,24 @@ namespace ACM.BL
         }
 
         /// <summary>
-        /// Calculatetotal amount for all invoices
+        /// Calculate total amount for all invoices
         /// </summary>
         /// <param name="invoices"></param>
         /// <returns></returns>
         public decimal CalculateTotalAmountInvoice(IEnumerable<Invoice> invoices)
         {
             var total = invoices.Sum((i) => i.TotalAmount);
+            return total;
+        }
+
+        /// <summary>
+        /// Calculate total amount units sold
+        /// </summary>
+        /// <param name="invoices"></param>
+        /// <returns></returns>
+        public int CalculateTotalAmountUnitsSold(IEnumerable<Invoice> invoices)
+        {
+            var total = invoices.Sum((i) => i.NumberOfUnits);
             return total;
         }
 

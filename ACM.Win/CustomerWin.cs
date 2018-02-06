@@ -44,6 +44,21 @@ namespace ACM.Win
             //CustomerGridView.DataSource = orderedList.ToList();
         }
 
+        /// <summary>
+        /// On form load event handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CustomerWin_Load(object sender, EventArgs e)
+        {
+            var customers = customerRepository.Retrieve();
+            var custNameId = customerRepository.GetNameAndId(customers);
+
+            CustomerComboBox.DisplayMember = "Name";
+            CustomerComboBox.ValueMember = "Id";
+            CustomerComboBox.DataSource = custNameId;
+        }
+
         //End of class
     }
 }

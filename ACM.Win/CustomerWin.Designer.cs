@@ -74,6 +74,7 @@
             this.Controls.Add(this.GetCustomersButton);
             this.Name = "CustomerWin";
             this.Text = "Customers";
+            this.Load += new System.EventHandler(this.CustomerWin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CustomerGridView)).EndInit();
             this.ResumeLayout(false);
 

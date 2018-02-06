@@ -134,6 +134,7 @@ namespace ACM.BL
                             InvoiceList = ir.Retrieve(4).ToList()
                             }
             };
+
             return custList;
         }
 
@@ -207,11 +208,10 @@ namespace ACM.BL
         public IEnumerable<Customer> GetOverdueCustomers(List<Customer> custList)
         {
             var overdue = custList
-                            .SelectMany((c) => 
-                                c.InvoiceList
+                            .SelectMany((c) => c.InvoiceList
                                     .Where((i) => (i.IsPaid ?? false) == false),
-                                                  (c, i) => c
-                                    ).Distinct();
+                                                  (c, i) => c)
+                            .Distinct();
 
             return overdue;
         }

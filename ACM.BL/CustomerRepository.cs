@@ -122,7 +122,7 @@ namespace ACM.BL
                             FirstName="Samwise",
                             LastName = "Gamgee",
                             EmailAddress = "sg@hob.me",
-                            CustomerTypeId=1,
+                            CustomerTypeId= 4,
                             InvoiceList = ir.Retrieve(3).ToList()
                             },
                     new Customer() 
@@ -188,17 +188,18 @@ namespace ACM.BL
                     (cid, tid) =>
                         new {
                             Name = cid.FirstName + " " + cid.LastName,
-                            tId = tid.CustomerTypeId,
+                            //tId = tid.CustomerTypeId,
                             tName = tid.TypeName
                         }
                 );
 
             foreach (var item in results)
             {
-                Console.WriteLine(item.Name + ": " + item.tId + " => " + item.tName);
+                //Console.WriteLine(item.Name + ": " + item.tId + " => " + item.tName);
+                Console.WriteLine(item.Name + ": " + item.tName);
             }
 
-            return results;
+            return results.ToList();
         }
 
         /// <summary>

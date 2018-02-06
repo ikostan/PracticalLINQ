@@ -59,10 +59,14 @@ namespace ACM.BL.Test
         public void CalculateTotalUnitsSoldTest()
         {
             // Arrange
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            var invoices = invoiceRepository.Retrieve();
 
             // Act
+            var total = invoiceRepository.CalculateTotalAmountUnitsSold(invoices);
 
             // Assert
+            Assert.AreEqual(136, total);
         }
 
         [TestMethod]

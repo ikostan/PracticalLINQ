@@ -100,10 +100,12 @@ namespace ACM.BL.Test
         {
             // Arrange
             CustomerRepository cr= new CustomerRepository();
+            CustomerTypeRepository ct = new CustomerTypeRepository();
             var invoices = cr.Retrieve();
+            var types = ct.Retrieve();
 
             // Act
-            var quaery = cr.GetInvoiceTotalByCustomerType(invoices);
+            var quaery = cr.GetInvoiceTotalByCustomerType(invoices, types);
 
             // NOT REALLY A TEST
         }

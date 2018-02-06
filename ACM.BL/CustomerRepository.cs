@@ -239,17 +239,30 @@ namespace ACM.BL
         /// Get total amount by customer type
         /// </summary>
         /// <returns></returns>
-        public dynamic GetInvoiceTotalByCustomerType(IEnumerable<Customer> customers)
+        public dynamic GetInvoiceTotalByCustomerType(
+            IEnumerable<Customer> customers, 
+            IEnumerable<CustomerType> types)
         {
             //Quaery
-            var quaery = customers.GroupBy(
-                (c) => c.CustomerTypeId ?? 0,
-                amount => amount.InvoiceList.Sum((i) => i.TotalAmount),
-                (key, val) => new {
-                    CustType = key,
-                    Total = val.Sum()
+            var quaery = customers
+                .Join(types,
+                    c => c.CustomerTypeId,
+                    t => t.CustomerTypeId,
+                    (c, t) => new {
+                        Instance = c,
+                        //CustomerTypeId = t.CustomerTypeId,
+                        cType = t.TypeName,
+                        //InvoiceList = c.InvoiceList
+                })
+                .GroupBy(
+                    (c) => c.cType,
+                    amount => amount.Instance.InvoiceList.Sum((i) => i.TotalAmount),
+                    (key, val) => new {
+                        CustType = key,
+                        Total = val.Sum()
                 }
-            );
+            )
+            .OrderBy((c) => c.CustType);
 
             //Debug:
             foreach (var item in quaery)

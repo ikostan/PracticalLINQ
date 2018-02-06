@@ -13,6 +13,12 @@ namespace ACM.BL
             {
                 new CustomerType()
                 {
+                    CustomerTypeId = 0,
+                    TypeName = "N/A",
+                    DisplayOrder = 6
+                },
+                new CustomerType()
+                {
                     CustomerTypeId = 1,
                     TypeName = "Corporate",
                     DisplayOrder = 2

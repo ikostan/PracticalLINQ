@@ -246,7 +246,7 @@ namespace ACM.BL
             //Quaery
             var quaery = customers
                 .Join(types,
-                    c => c.CustomerTypeId,
+                    c => c.CustomerTypeId ?? 0,
                     t => t.CustomerTypeId,
                     (c, t) => new
                     {

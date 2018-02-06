@@ -188,17 +188,54 @@ namespace ACM.BL
         }
 
         /// <summary>
-        /// Calculate mean discount
+        /// Calculate max discount
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
         public decimal CalculateMean(IEnumerable<Invoice> list)
         {
             //var total = list.Sum((c) => c.TotalAmount);
-            //var mean = total / list.Count();
+            //var max = total / list.Count();
 
             var mean = list.Average((i) => i.DiscountPercent);
             return mean;
+        }
+
+        /// <summary>
+        /// Calculate median discount
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public decimal CalculateMedian(IEnumerable<Invoice> list)
+        {
+            var discounts = list.OrderBy((i) => i.DiscountPercent).Select((i) => i.DiscountPercent);
+
+            var median = 0.0M;
+            int midPosition = discounts.Count() / 2;
+
+            if (discounts.Count() % 2 != 0)
+            {
+                median = 
+                    discounts.ElementAt(midPosition);
+            }
+            else
+            {
+                median = 
+                    (discounts.ElementAt(midPosition) + discounts.ElementAt(midPosition + 1)) / 2;
+            }
+
+            return median;
+        }
+
+        /// <summary>
+        /// Calculate mode (max) discount
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public decimal CalculateMode(IEnumerable<Invoice> list)
+        {
+            var max = list.Max((i) => i.DiscountPercent);
+            return max;
         }
 
         //End of Class

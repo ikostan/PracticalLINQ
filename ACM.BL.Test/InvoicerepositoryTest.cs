@@ -29,10 +29,14 @@ namespace ACM.BL.Test
         public void CalculateMedianTest()
         {
             // Arrange
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            var invoices = invoiceRepository.Retrieve();
 
             // Act
+            var median = invoiceRepository.CalculateMedian(invoices);
 
             // Assert
+            Assert.AreEqual(10.0M, median);
         }
 
         [TestMethod]

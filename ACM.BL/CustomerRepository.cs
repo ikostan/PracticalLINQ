@@ -235,6 +235,31 @@ namespace ACM.BL
             return overdue;
         }
 
+        /// <summary>
+        /// Get total amount by customer type
+        /// </summary>
+        /// <returns></returns>
+        public dynamic GetInvoiceTotalByCustomerType(IEnumerable<Customer> customers)
+        {
+            //Quaery
+            var quaery = customers.GroupBy(
+                (c) => c.CustomerTypeId ?? 0,
+                amount => amount.InvoiceList.Sum((i) => i.TotalAmount),
+                (key, val) => new {
+                    CustType = key,
+                    Total = val.Sum()
+                }
+            );
+
+            //Debug:
+            foreach (var item in quaery)
+            {
+                Console.WriteLine($"{item.CustType}: {item.Total}");
+            }
+
+            return quaery;
+        }
+
         //End of Class
     }
 }

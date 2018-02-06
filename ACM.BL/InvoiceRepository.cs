@@ -180,7 +180,8 @@ namespace ACM.BL
 
             foreach (var item in quaery)
             {
-                Console.WriteLine($"{item.Key.isPaid} => {item.Key.Month}, {item.InvoiceAmount}");
+                Console.WriteLine(
+                    $"{item.Key.isPaid} => {item.Key.Month}, {item.InvoiceAmount}");
             }
 
             return quaery;

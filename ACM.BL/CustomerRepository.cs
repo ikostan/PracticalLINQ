@@ -171,6 +171,24 @@ namespace ACM.BL
         }
 
         /// <summary>
+        /// Receive list of full names and Ids
+        /// </summary>
+        /// <param name="customers"></param>
+        /// <returns></returns>
+        public dynamic GetNameAndId(IEnumerable<Customer> customers)
+        {
+            var list = customers
+                .OrderBy((c) => c.LastName)
+                .ThenBy((c) => c.FirstName)
+                .Select((c) => new{
+                        Name = c.LastName + " " + c.FirstName,
+                        Id = c.CustomerId}
+            );
+
+            return list.ToList();
+        }
+
+        /// <summary>
         /// Joins customers and customer types
         /// </summary>
         /// <param name="customers"></param>

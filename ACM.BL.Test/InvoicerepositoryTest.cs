@@ -73,8 +73,11 @@ namespace ACM.BL.Test
         public void GetInvoiceTotalByIsPaidTest()
         {
             // Arrange
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            var invoices = invoiceRepository.Retrieve().ToList();
 
             // Act
+            var paid = invoiceRepository.GetIvoiceTotalByIsPaid(invoices);
 
             // NOT REALLY A TEST
         }

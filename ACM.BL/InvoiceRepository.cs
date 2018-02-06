@@ -131,6 +131,33 @@ namespace ACM.BL
             return total;
         }
 
+        /// <summary>
+        /// Group invoices by isPaid property
+        /// </summary>
+        /// <param name="invoices"></param>
+        /// <returns></returns>
+        public dynamic GetIvoiceTotalByIsPaid(List<Invoice> invoices)
+        {
+            //Quaery:
+            var paidInvoices = invoices.GroupBy((i) => i.IsPaid ?? false, 
+                                                inv => inv.TotalAmount,
+                                                (key, val) => new
+                                                    {
+                                                        Key = key,
+                                                        InvoiceNumber = val.Sum()
+                                                    }
+            );
+
+            //Debug only:
+            foreach (var item in paidInvoices)
+            {
+                Console.WriteLine($"{item.Key}: {item.InvoiceNumber}");
+            }
+
+            return paidInvoices;
+        }
+
+
         //End of Class
     }
 }

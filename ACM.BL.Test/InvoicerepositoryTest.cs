@@ -14,11 +14,15 @@ namespace ACM.BL.Test
         [TestMethod]
         public void CalculateMeanTest()
         {
-            // Arrange           
+            // Arrange
+            InvoiceRepository invoiceRepository = new InvoiceRepository();
+            var invoices = invoiceRepository.Retrieve();
 
             // Act
+            var mean = invoiceRepository.CalculateMean(invoices);
 
             // Assert
+            Assert.AreEqual(6.875M, mean);
         }
 
         [TestMethod]

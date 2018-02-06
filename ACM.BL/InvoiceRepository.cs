@@ -187,6 +187,20 @@ namespace ACM.BL
             return quaery;
         }
 
+        /// <summary>
+        /// Calculate mean discount
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public decimal CalculateMean(IEnumerable<Invoice> list)
+        {
+            //var total = list.Sum((c) => c.TotalAmount);
+            //var mean = total / list.Count();
+
+            var mean = list.Average((i) => i.DiscountPercent);
+            return mean;
+        }
+
         //End of Class
     }
 }

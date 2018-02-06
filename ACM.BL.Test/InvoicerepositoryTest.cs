@@ -94,5 +94,18 @@ namespace ACM.BL.Test
 
             // NOT REALLY A TEST
         }
+
+        [TestMethod]
+        public void GetInvoiceTotalByCustomerTypeTest()
+        {
+            // Arrange
+            CustomerRepository cr= new CustomerRepository();
+            var invoices = cr.Retrieve();
+
+            // Act
+            var quaery = cr.GetInvoiceTotalByCustomerType(invoices);
+
+            // NOT REALLY A TEST
+        }
     }
 }

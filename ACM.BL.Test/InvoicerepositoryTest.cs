@@ -47,10 +47,10 @@ namespace ACM.BL.Test
             var invoices = invoiceRepository.Retrieve();
 
             // Act
-            var max = invoiceRepository.CalculateMode(invoices);
+            var mode = invoiceRepository.CalculateMode(invoices);
 
             // Assert
-            Assert.AreEqual(15.0M, max);
+            Assert.AreEqual(10.0M, mode);
         }
 
         [TestMethod]

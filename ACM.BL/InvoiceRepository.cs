@@ -228,14 +228,39 @@ namespace ACM.BL
         }
 
         /// <summary>
-        /// Calculate mode (max) discount
+        /// Calculate mode (most frequant) discount
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
         public decimal CalculateMode(IEnumerable<Invoice> list)
         {
-            var max = list.Max((i) => i.DiscountPercent);
-            return max;
+            /*
+            var discountGroup = list.Select((i) => i.DiscountPercent);
+
+            Dictionary<decimal, int> values = new Dictionary<decimal, int>();
+
+            foreach (var item in discountGroup.Distinct())
+            {
+                values.Add(item, 0);
+            }
+
+            foreach (var item in discountGroup)
+            {
+                values[item] += 1;
+            }
+
+            var mode = values.OrderBy((c) => c.Value).Last();
+
+            return mode.Key;
+            */
+
+            var mode = list
+                .GroupBy((c) => c.DiscountPercent)
+                .OrderByDescending((i) => i.Count())
+                .Select((k) => k.Key)
+                .FirstOrDefault();
+
+            return mode;
         }
 
         //End of Class

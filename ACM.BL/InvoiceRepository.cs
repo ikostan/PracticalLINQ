@@ -8,11 +8,11 @@ namespace ACM.BL
     public class InvoiceRepository
     {
         /// <summary>
-        /// Return invoices per Customer Id
+        /// Return invoices 
         /// </summary>
         /// <param name="custId"></param>
         /// <returns></returns>
-        public IEnumerable<Invoice> Retrieve(int custId)
+        public IEnumerable<Invoice> Retrieve()
         {
             List<Invoice> invoices = new List<Invoice>()
             {
@@ -58,9 +58,25 @@ namespace ACM.BL
                 }
             };
 
-            var results = invoices.Where((i) => i.CustomerId == custId).ToList();
+            //var results = invoices.Where((i) => i.CustomerId == custId).ToList();
 
-            return results;
+            //return results;
+
+            return invoices;
+        }
+
+        /// <summary>
+        /// Return invoices per Customer Id
+        /// </summary>
+        /// <param name="customerId"></param>
+        /// <returns></returns>
+        public List<Invoice> Retrieve(int customerId)
+        {
+            var invoiceList = this.Retrieve();
+            List<Invoice> filteredList = invoiceList
+                                            .Where((i) => i.CustomerId == customerId)
+                                            .ToList();
+            return filteredList;
         }
 
         //End of Class

@@ -90,7 +90,6 @@ namespace ACM.BL
                             DiscountPercent=0M}};
 
             //var results = invoices.Where((i) => i.CustomerId == custId).ToList();
-
             //return results;
 
             return invoices;
